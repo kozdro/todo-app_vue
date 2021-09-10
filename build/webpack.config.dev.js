@@ -5,7 +5,7 @@ const { merge } = require('webpack-merge')
 const baseConfig = require('./webpack.config.base')
 
 const HOST = 'localhost'
-const PORT = 8082
+const PORT = 8080
 
 module.exports = merge(baseConfig, {
   mode: 'development',
