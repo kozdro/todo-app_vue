@@ -1,10 +1,21 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import Home from '../pages/Home.vue'
+import Todos from '../pages/Todos.vue'
+import TodoView from '../pages/TodoView.vue'
 
 const routes = [
   {
     path: '/',
     name: 'Index',
-    component: () => import(/* webpackChunkName: "about" */ '../pages/Home.vue')
+    component: Home
+  },
+  {
+    path: '/todos',
+    component: Todos
+  },
+  {
+    path: '/todo-view/:id',
+    component: TodoView
   }
 ]
 
