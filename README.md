@@ -63,7 +63,7 @@ Add express.js to your application (see `app.js` file in the `backend` folder), 
 
 **TASK 2**:  
 
-Connect your backend with MongoDB and store there newly created todos, implement endpoints that will be responsible for creating and listing todos. Instead of installing MongoDB locally on your machine, you can use docker-compose from **mydivante** as an example to run MongoDB in the container. Todos in your database should have the same schema as the ones from the `todos.json`.
+Connect your backend with MongoDB and store there newly created todos, implement endpoints that will be responsible for creating, listing and deleting todos. Instead of installing MongoDB locally on your machine, you can use docker-compose from **mydivante** as an example to run MongoDB in the container. Todos in your database should have the same schema as the ones from the `todos.json`.
 
 **TASK 3**:  
 
