@@ -67,5 +67,5 @@ Connect your backend with MongoDB and store there newly created todos, implement
 
 **TASK 3**:  
 
-Connect your backend with the frontend, add corresponding methods that will be responsible for adding and fetching tasks from the backend on the frontend side. Add proxy to webpack dev-server, backend should be available at `localhost:8080/api`.
+Connect your backend with the frontend, add corresponding methods that will be responsible for adding, fetching and deleting tasks from the backend on the frontend side. Add proxy to webpack dev-server, backend should be available at `localhost:8080/api`.
 
