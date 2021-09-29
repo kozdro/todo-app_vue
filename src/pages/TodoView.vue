@@ -16,7 +16,7 @@ export default {
   }
 }
 </script>
-<style scoped>
+<style lang="scss" scoped>
 .todo-view{
   display: flex;
   flex-direction: column;

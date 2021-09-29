@@ -1,5 +1,6 @@
 <template>
   <section class="todos">
+    <the-header text="todos list"></the-header>
     <div class="todos__managament">
       <div>{{ currentTodos.length }}</div>
       <input
@@ -34,15 +35,19 @@
     </div>
   </section>
 </template>
+
 <script>
 import { mapGetters, mapActions } from 'vuex'
 import useVuelidate from '@vuelidate/core'
 import { required } from '@vuelidate/validators'
 import Todo from '../components/Todo.vue'
+import TheHeader from '../components/layout/TheHeader.vue'
+
 export default {
   name: 'Todos',
   components: {
-    Todo
+    Todo,
+    TheHeader
   },
   setup () {
     return {
@@ -90,20 +95,24 @@ export default {
   }
 }
 </script>
-<style scoped>
+
+<style lang="scss" scoped>
 .todos {
   padding: 1.5em;
   display: flex;
   flex-direction: column;
 }
+
 .todos__managament {
   padding: 1em;
   display: flex;
   flex-direction: column;
 }
+
 .todos__browser-entry {
   margin: 0.5em;
 }
+
 .todos__managament-errors {
   color: red;
 }

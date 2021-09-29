@@ -1,20 +1,20 @@
 <template>
   <div class="hello">
-    <h1>VueJs TODO List App</h1>
-    <ul>
-      <li>
-        <router-link to="/todos">
-          todos
-        </router-link>
-      </li>
-    </ul>
+    <the-header text="todos"></the-header>
+    <p class="description"><span>todos</span> is an app that will help you organize your things to do!</p>
+    <h3>To add new <span>todo</span> or check your list, go <router-link to="/todos">here</router-link>.</h3>
   </div>
 </template>
 
 <script>
 import { mapActions } from 'vuex'
+import TheHeader from '../components/layout/TheHeader.vue'
+
 export default {
   name: 'Home',
+  components: {
+    TheHeader
+  },
   mounted () {
     this.addTodo({ id: 'testId', msg: 'testMsg' })
   },
@@ -27,19 +27,41 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style lang="scss" scoped>
+.hello {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.description {
+  & span {
+    font-family: 'Bebas Neue';
+    font-size: 1.5em;
+  }
+}
+
 h3 {
-  margin: 40px 0 0;
+  margin-top: 100px;
+  font-weight: normal;
+  font-size: 1.5em;
+
+  & span {
+    font-family: 'Bebas Neue';
+  }
 }
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
+
 a {
   color: #42b983;
+  text-decoration: none;
+  font-weight: bold;
+  font-family: 'Bebas Neue';
+  letter-spacing: 1px;
+  border-bottom: 3px solid white;
+  transition: 0.3s;
+
+  &:hover {
+    border-bottom: 3px solid #56a07c;
+  }
 }
 </style>

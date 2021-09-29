@@ -28,7 +28,7 @@ export default {
   }
 }
 </script>
-<style scoped>
+<style lang="scss" scoped>
   .todo {
     border: solid black 1px;
     padding: 1em;
