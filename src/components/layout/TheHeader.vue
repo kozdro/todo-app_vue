@@ -20,6 +20,7 @@ h1 {
   font-size: 60px;
   color: #56a07c;
   padding: 40px 0;
+  text-align: center;
 }
 
 // .logo {
