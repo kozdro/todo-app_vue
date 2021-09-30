@@ -1,17 +1,33 @@
 <template>
   <section class="todos">
     <div class="todos__managament">
-      <div class="todos-length">Things to do: {{ currentTodos.length }}</div>
+      <div class="todos-length">
+        Things to do: {{ currentTodos.length }}
+      </div>
       <div class="todos__managament-add">
         <input
           v-model="newTodoMessage"
           placeholder="Todo content"
           @blur="v$.newTodoMessage.$touch()"
         >
-        <button @click="createTodo">Add todo</button>
+        <input
+          v-model="dueDate"
+          type="date"
+          :class="vClass(v$.dateObj)"
+          @input="v$.dateObj.$touch()"
+        >
+        <button @click="createTodo">
+          Add todo
+        </button>
       </div>
-      <div v-if="v$.newTodoMessage.$error" class="todos__managament-errors">
-        <div v-for="error in v$.newTodoMessage.$errors" :key="error.$message">
+      <div
+        v-if="v$.newTodoMessage.$error"
+        class="todos__managament-errors"
+      >
+        <div
+          v-for="error in v$.newTodoMessage.$errors"
+          :key="error.$message"
+        >
           {{ error.$message }}
         </div>
       </div>
@@ -32,7 +48,7 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 import useVuelidate from '@vuelidate/core'
-import { required } from '@vuelidate/validators'
+import { required, minValue } from '@vuelidate/validators'
 import Todo from '../components/Todo.vue'
 
 export default {
@@ -52,22 +68,30 @@ export default {
         minLength: {
           $validator: (value) => value.length > 3,
           $message: ({ $params }) =>
-            `This field should be at least ${$params.min} long.`,
+            `Todo content should be at least ${$params.min} long.`,
           $params: { min: 3 }
         }
+      },
+      dateObj: {
+        required,
+        minValue: minValue(new Date())
       }
     }
   },
   data () {
     return {
       newTodoMessage: '',
-      page: 0
+      page: 0,
+      dueDate: ''
     }
   },
   computed: {
     ...mapGetters('todos', ['getSliceOfTodos']),
     currentTodos () {
       return this.getSliceOfTodos([0, 10])
+    },
+    dateObj () {
+      return this.dueDate ? new Date(this.dueDate) : null
     }
   },
   methods: {
@@ -83,6 +107,12 @@ export default {
     },
     onRemoveTodo (id) {
       this.removeTodo(id)
+    },
+    vClass (v$) {
+      return {
+        error: v$.$error,
+        valid: !v$.$invalid
+      }
     }
   }
 }
@@ -110,7 +140,7 @@ export default {
     justify-content: space-evenly;
 
     & input {
-      width: 60%;
+      width: 30%;
       padding: 10px 15px;
     }
 
@@ -142,5 +172,23 @@ export default {
 
 .todos__managament-errors {
   color: red;
+}
+
+.error {
+  border-color: red;
+  background: #FDD
+}
+
+.error:focus {
+  outline-color: #F99;
+}
+
+.valid {
+  border-color: #5A5;
+  background: #EFE;
+}
+
+.valid:focus {
+  outline-color: #8E8;
 }
 </style>
