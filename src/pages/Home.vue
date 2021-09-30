@@ -1,14 +1,16 @@
 <template>
-    <div class="hello">
-      <p class="description">
-        <span>todos</span> is an app that will help you organize your things to
-        do!
-      </p>
-      <h3>
-        To add new <span>todo</span> or check your list, go
-        <router-link to="/todos">here</router-link>.
-      </h3>
-    </div>
+  <div class="hello">
+    <p class="description">
+      <span>todos</span> is an app that will help you organize your things to
+      do!
+    </p>
+    <h3>
+      To add new <span>todo</span> or check your list, go
+      <router-link to="/todos">
+        here
+      </router-link>.
+    </h3>
+  </div>
 </template>
 
 <script>

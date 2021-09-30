@@ -50,7 +50,7 @@ export default {
       border: none;
       border-radius: 5px;
       background-color: #6d250f;
-      color: rgb(211, 209, 209);
+      color: rgb(200, 200, 200);
       cursor: pointer;
       transition: 0.3s;
 
@@ -61,11 +61,14 @@ export default {
 
     & a {
       text-decoration: none;
-      color: black;
+      color: #56a07c;
     }
   }
 
   .wrap {
+    font-size: 0.8em;
+    color: rgb(180,180,180);
+
     & button {
       margin-left: 80px;
     }
