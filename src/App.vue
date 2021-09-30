@@ -20,7 +20,9 @@ export default {
   },
   computed: {
     textHeader () {
-      return this.$route.path === '/todos' ? 'todos list' : 'todos'
+      if (this.$route.path === '/todos') return 'todos list'
+      if (this.$route.path === '/about') return 'about todos'
+      return 'todos'
     }
   }
 }
