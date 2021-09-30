@@ -1,18 +1,40 @@
 <template>
   <nav>
     <ul>
-      <li v-if="$route.path === '/todos'">
-        <router-link to="/">Home</router-link>
+      <li v-if="homePage">
+        <router-link to="/">
+          Home
+        </router-link>
       </li>
-      <li v-if="$route.path !== '/todos'">
-        <router-link to="/todos">List</router-link>
+      <li v-if="todosPage">
+        <router-link to="/todos">
+          List
+        </router-link>
       </li>
-      <li>
-        <router-link to="/about">About Project</router-link>
+      <li v-if="aboutPage">
+        <router-link to="/about">
+          About Project
+        </router-link>
       </li>
     </ul>
   </nav>
 </template>
+
+<script>
+export default {
+  computed: {
+    homePage () {
+      return this.$route.path !== '/'
+    },
+    todosPage () {
+      return this.$route.path !== '/todos'
+    },
+    aboutPage () {
+      return this.$route.path !== '/about'
+    }
+  }
+}
+</script>
 
 <style lang="scss" scoped>
 nav {
@@ -36,6 +58,7 @@ ul {
 li {
   background-color: #42b983;
   border: 3px solid transparent;
+  border-radius: 5px;
   cursor: pointer;
   transition: 0.3s;
 
