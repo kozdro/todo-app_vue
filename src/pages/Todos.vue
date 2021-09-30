@@ -39,6 +39,7 @@
         :key="todo.id"
         class="todos__browser-entry"
         :message="todo.msg"
+        :date="todo.date"
         @remove="onRemoveTodo"
       />
     </div>
@@ -82,7 +83,7 @@ export default {
     return {
       newTodoMessage: '',
       page: 0,
-      dueDate: ''
+      dueDate: null
     }
   },
   computed: {
@@ -100,9 +101,10 @@ export default {
       removeTodo: 'remove'
     }),
     createTodo () {
-      if (this.v$.newTodoMessage.$error) return
+      if (this.v$.newTodoMessage.$error || this.v$.dateObj.$error) return
       this.addTodo({
-        msg: this.newTodoMessage
+        msg: this.newTodoMessage,
+        date: this.dueDate
       })
     },
     onRemoveTodo (id) {

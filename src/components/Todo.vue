@@ -3,11 +3,15 @@
     <RouterLink :to="`/todo-view/${id}`">
       {{ message }}
     </RouterLink>
-    <button @click="remove">
-      Remove
-    </button>
+    <div class="wrap">
+      due to: {{ date }}
+      <button @click="remove">
+        Remove
+      </button>
+    </div>
   </div>
 </template>
+
 <script>
 export default {
   name: 'Todo',
@@ -19,6 +23,10 @@ export default {
     id: {
       type: Number,
       required: true
+    },
+    date: {
+      type: Date,
+      required: true
     }
   },
   methods: {
@@ -28,6 +36,7 @@ export default {
   }
 }
 </script>
+
 <style lang="scss" scoped>
   .todo {
     border: solid black 1px;
@@ -53,6 +62,12 @@ export default {
     & a {
       text-decoration: none;
       color: black;
+    }
+  }
+
+  .wrap {
+    & button {
+      margin-left: 80px;
     }
   }
 </style>

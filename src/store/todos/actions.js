@@ -4,7 +4,8 @@ export default {
     add (context, todoToAdd) {
       const fullTodo = {
         id: Math.round(Math.random() * 10000000),
-        msg: todoToAdd.msg
+        msg: todoToAdd.msg,
+        date: todoToAdd.date
       }
       context.commit(ADD, { todoToAdd: fullTodo })
     },
