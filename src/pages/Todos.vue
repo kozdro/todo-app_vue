@@ -1,6 +1,5 @@
 <template>
   <section class="todos">
-    <the-header text="todos list" />
     <div class="todos__managament">
       <div class="todos-length">Things to do: {{ currentTodos.length }}</div>
       <div class="todos__managament-add">
@@ -35,13 +34,11 @@ import { mapGetters, mapActions } from 'vuex'
 import useVuelidate from '@vuelidate/core'
 import { required } from '@vuelidate/validators'
 import Todo from '../components/Todo.vue'
-import TheHeader from '../components/layout/TheHeader.vue'
 
 export default {
   name: 'Todos',
   components: {
-    Todo,
-    TheHeader
+    Todo
   },
   setup () {
     return {
@@ -93,10 +90,11 @@ export default {
 
 <style lang="scss" scoped>
 .todos {
-  padding: 1.5em;
   display: flex;
   flex-direction: column;
   width: 800px;
+  height: 60%;
+  margin-bottom: 50px;
 }
 
 .todos__managament {

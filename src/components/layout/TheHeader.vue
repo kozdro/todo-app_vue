@@ -19,8 +19,8 @@ h1 {
   font-family: 'Bebas Neue';
   font-size: 60px;
   color: #56a07c;
-  padding: 40px 0;
   text-align: center;
+  padding-top: 60px;
 }
 
 // .logo {
