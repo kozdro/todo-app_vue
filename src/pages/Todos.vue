@@ -117,6 +117,7 @@ export default {
     & button {
       padding: 10px 30px;
       border: none;
+      border-radius: 5px;
       background-color: #56a07c;
       cursor: pointer;
       font-size: 1.2em;
