@@ -1,6 +1,7 @@
 <template>
   <div class="container center-content">
     <the-header :text="textHeader" />
+    <the-menu />
     <RouterView />
     <the-footer />
   </div>
@@ -9,11 +10,13 @@
 <script>
 import TheHeader from './components/layout/TheHeader.vue'
 import TheFooter from './components/layout/TheFooter.vue'
+import TheMenu from './components/layout/TheMenu.vue'
 
 export default {
   components: {
     TheHeader,
-    TheFooter
+    TheFooter,
+    TheMenu
   },
   computed: {
     textHeader () {

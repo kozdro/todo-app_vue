@@ -20,7 +20,7 @@ h1 {
   font-size: 60px;
   color: #56a07c;
   text-align: center;
-  padding-top: 60px;
+  margin-top: 30px;
 }
 
 // .logo {
