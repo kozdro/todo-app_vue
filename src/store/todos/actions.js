@@ -1,4 +1,5 @@
 import { ADD, REMOVE } from './mutationTypes'
+
 export default {
   actions: {
     add (context, todoToAdd) {
@@ -11,6 +12,16 @@ export default {
     },
     remove (context, todoId) {
       context.commit(REMOVE, { todoId })
+    },
+    async getTodos (context) {
+      const todos = []
+
+      const response = await fetch('../../data/todos.json')
+      const responseData = await response.json()
+
+      todos.push(responseData)
+
+      context.commit('getTodos', todos)
     }
   }
 }

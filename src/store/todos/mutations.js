@@ -6,6 +6,9 @@ export default {
     },
     [REMOVE] (state, { todoId }) {
       state.todos = state.todos.filter(todo => todo.id !== todoId)
+    },
+    getTodos (state, payload) {
+      state.todos = payload
     }
   }
 }
