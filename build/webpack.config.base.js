@@ -31,6 +31,16 @@ module.exports = {
         use: 'vue-loader'
       },
       {
+        test: /\.json$/,
+        use: {
+          loader: 'url-loader',
+          options: {
+            limit: 10000,
+            name: utils.assetsPath('data/[name].[hash:7].[ext]')
+          }
+        }
+      },
+      {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
@@ -115,6 +125,11 @@ module.exports = {
         {
           from: utils.resolve('static/img'),
           to: utils.resolve('dist/static/img'),
+          toType: 'dir'
+        },
+        {
+          from: utils.resolve('static/data'),
+          to: utils.resolve('dist/static/data'),
           toType: 'dir'
         }
       ]
