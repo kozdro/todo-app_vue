@@ -25,7 +25,7 @@ export default {
       required: true
     },
     date: {
-      type: Date,
+      type: String,
       required: true
     }
   },
@@ -62,6 +62,7 @@ export default {
     & a {
       text-decoration: none;
       color: #56a07c;
+      font-weight: bold;
     }
   }
 

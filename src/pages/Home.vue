@@ -14,16 +14,19 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 
 export default {
   name: 'Home',
+  computed: {
+    ...mapState(['todos'])
+  },
   mounted () {
-    this.addTodo({ id: 'testId', msg: 'testMsg' })
+    this.getTodos()
   },
   methods: {
     ...mapActions('todos', {
-      addTodo: 'add'
+      getTodos: 'getTodos'
     })
   }
 }

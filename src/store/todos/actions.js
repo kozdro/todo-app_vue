@@ -14,14 +14,17 @@ export default {
       context.commit(REMOVE, { todoId })
     },
     async getTodos (context) {
-      const todos = []
+      const response = await fetch('static/data/todos.json')
+      const data = await response.json()
+      const todos = data.map(todo => ({
+        id: parseInt(todo.id),
+        msg: todo.description,
+        date: todo.dueTo.slice(0, 10)
+      }))
 
-      const response = await fetch('../../data/todos.json')
-      const responseData = await response.json()
-
-      todos.push(responseData)
-
-      context.commit('getTodos', todos)
+      for (let i = 0; i < todos.length; i++) {
+        context.commit(ADD, { todoToAdd: todos[i] })
+      }
     }
   }
 }

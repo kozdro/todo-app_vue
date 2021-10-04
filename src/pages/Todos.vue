@@ -89,7 +89,7 @@ export default {
   computed: {
     ...mapGetters('todos', ['getSliceOfTodos']),
     currentTodos () {
-      return this.getSliceOfTodos([0, 10])
+      return this.getSliceOfTodos([0, 15])
     },
     dateObj () {
       return this.dueDate ? new Date(this.dueDate) : null
@@ -103,6 +103,7 @@ export default {
     createTodo () {
       if (this.v$.newTodoMessage.$error || this.v$.dateObj.$error) return
       this.addTodo({
+        id: Math.round(Math.random() * 10000000),
         msg: this.newTodoMessage,
         date: this.dueDate
       })
