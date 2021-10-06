@@ -8,9 +8,9 @@
 </template>
 
 <script>
-import TheHeader from './components/layout/TheHeader.vue'
-import TheFooter from './components/layout/TheFooter.vue'
-import TheMenu from './components/layout/TheMenu.vue'
+import TheHeader from '@layout/TheHeader.vue'
+import TheFooter from '@layout/TheFooter.vue'
+import TheMenu from '@layout/TheMenu.vue'
 
 export default {
   components: {

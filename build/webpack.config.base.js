@@ -15,7 +15,9 @@ module.exports = {
       assets: utils.resolve('assets'),
       pages: utils.resolve('src/pages'),
       static: utils.resolve('static'),
-      components: utils.resolve('src/components')
+      components: utils.resolve('src/components'),
+      '@': utils.resolve('src'),
+      '@layout': utils.resolve('src/components/layout')
     }
   },
 
@@ -50,7 +52,7 @@ module.exports = {
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         use: {
-          loader: 'url-loader',
+          loader: require.resolve('file-loader') + '?name=../[path][name].[ext]',
           options: {
             limit: 10000,
             name: utils.assetsPath('img/[name].[hash:7].[ext]')
