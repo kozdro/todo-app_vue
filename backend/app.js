@@ -11,16 +11,15 @@ app.use(morgan('dev'))
 app.use(bodyParser.json())
 app.use(cors())
 
-app.listen(8080)
-
 const mongo = require('mongodb')
 const MongoClient = mongo.MongoClient
-const uri = 'mongodb+srv://user:user@cluster0.pl6it.mongodb.net/todoVue?retryWrites=true&w=majority'
-let client
-
+const uri = process.env.MONGO_URI
 const mongoClient = new MongoClient(uri, {
-  useNewUrlParser: true
+  useNewUrlParser: true,
+  useUnifiedTopology: true
 })
+
+const collection = mongoClient.db('todoVue').collection('todos')
 
 mongoClient.connect((err, db) => {
   if (err !== null) {
@@ -28,14 +27,12 @@ mongoClient.connect((err, db) => {
 
     return
   }
-  
-  client = db
+
+  mongoClient = db
 })
 
 app.post('/', (req, res) => {
-  const collection = client.db('todoVue').collection('todos')
-  
-  collection.insertOne({ description: , dueTo:  }, (err, results) => {
+  collection.insertOne({ id: , description: , dueTo:  }, (err, results) => {
     if (err) {
       console.log(err)
       res.send('')
@@ -43,13 +40,11 @@ app.post('/', (req, res) => {
       return
     }
 
-    res.send(results.ops[0])
+    res.send(results.ops[0])  // return new document
   })
 })
 
 app.post('/', (req, res) => {
-  const collection = client.db('todoVue').collection('todos')
-
   collection.removeOne({ id: }, (err, results) => {
     if (err) {
       console.log(err)
@@ -61,3 +56,18 @@ app.post('/', (req, res) => {
     res.send()
   })
 })
+
+app.get('/', (req, res) => {
+  collection.find().toArray((err, results) => {
+    if (err) {
+      console.log(err)
+      res.send([])
+
+      return
+    }
+
+    res.send(results)
+  })
+})
+
+app.listen(8080)
