@@ -46,9 +46,8 @@ app.post('/api/add/', (req, res) => {
 })
 
 // delete task
-app.post('/api/delete/', (req, res) => {
-  console.log(req)
-  collection.deleteOne({ id: '' }, (err, results) => {
+app.delete('/api/delete/:id/', (req, res) => {
+  collection.deleteOne({ id: req.params.id }, (err, results) => {
     if (err) {
       console.log(err)
       res.send('')
