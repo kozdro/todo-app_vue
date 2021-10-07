@@ -21,8 +21,10 @@ export default {
   computed: {
     ...mapState(['todos'])
   },
-  mounted () {
-    this.getTodos()
+  created () {
+    window.addEventListener('load', () => {
+      this.getTodos()
+    })
   },
   methods: {
     ...mapActions('todos', {
