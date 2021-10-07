@@ -13,8 +13,8 @@ app.use(cors())
 
 const mongo = require('mongodb')
 const MongoClient = mongo.MongoClient
-const uri = process.env.MONGO_URI
-const mongoClient = new MongoClient(uri, {
+const uri = 'mongodb+srv://user:user@cluster0.pl6it.mongodb.net/todoVue?retryWrites=true&w=majority'
+let mongoClient = new MongoClient(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
@@ -31,8 +31,8 @@ mongoClient.connect((err, db) => {
   mongoClient = db
 })
 
-app.post('/', (req, res) => {
-  collection.insertOne({ id: , description: , dueTo:  }, (err, results) => {
+app.post('/api/add/', (req, res) => {
+  collection.insertOne({ id: req.body.id, description: req.body.msg, dueTo: req.body.date }, (err, results) => {
     if (err) {
       console.log(err)
       res.send('')
@@ -40,16 +40,17 @@ app.post('/', (req, res) => {
       return
     }
 
-    res.send(results.ops[0])  // return new document
+    res.send(results) // returns new document
   })
 })
 
-app.post('/', (req, res) => {
-  collection.removeOne({ id: }, (err, results) => {
+app.post('/api/delete/', (req, res) => {
+  console.log(req)
+  collection.deleteOne({ id: '' }, (err, results) => {
     if (err) {
       console.log(err)
       res.send('')
-      
+
       return
     }
 
@@ -57,7 +58,7 @@ app.post('/', (req, res) => {
   })
 })
 
-app.get('/', (req, res) => {
+app.get('/api/get/', (req, res) => {
   collection.find().toArray((err, results) => {
     if (err) {
       console.log(err)
@@ -70,4 +71,5 @@ app.get('/', (req, res) => {
   })
 })
 
-app.listen(8080)
+app.listen(8081)
+console.log('backend listen on port 8081')
