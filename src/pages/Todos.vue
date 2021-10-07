@@ -81,6 +81,7 @@ export default {
   },
   data () {
     return {
+      id: Math.round(Math.random() * 10000000).toString(),
       newTodoMessage: '',
       page: 0,
       dueDate: null
@@ -102,11 +103,13 @@ export default {
     }),
     createTodo () {
       if (this.v$.newTodoMessage.$error || this.v$.dateObj.$error) return
-      this.addTodo({
-        id: Math.round(Math.random() * 10000000),
+
+      const newTodo = {
+        id: this.id,
         msg: this.newTodoMessage,
         date: this.dueDate
-      })
+      }
+      this.addTodo(newTodo)
     },
     onRemoveTodo (id) {
       this.removeTodo(id)
