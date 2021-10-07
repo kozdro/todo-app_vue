@@ -24,7 +24,7 @@ export default {
       const res = await fetch('static/data/todos.json')
       const data = await res.json()
       const todos = data.map(todo => ({
-        id: todo.id,
+        id: parseInt(todo.id),
         msg: todo.description,
         date: todo.dueTo.slice(0, 10)
       }))

@@ -104,7 +104,7 @@ export default {
       if (this.v$.newTodoMessage.$error || this.v$.dateObj.$error) return
 
       const newTodo = {
-        id: Math.round(Math.random() * 10000000).toString(),
+        id: Math.round(Math.random() * 10000000),
         msg: this.newTodoMessage,
         date: this.dueDate
       }
