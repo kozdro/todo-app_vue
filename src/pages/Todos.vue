@@ -81,7 +81,6 @@ export default {
   },
   data () {
     return {
-      id: Math.round(Math.random() * 10000000).toString(),
       newTodoMessage: '',
       page: 0,
       dueDate: null
@@ -105,7 +104,7 @@ export default {
       if (this.v$.newTodoMessage.$error || this.v$.dateObj.$error) return
 
       const newTodo = {
-        id: this.id,
+        id: Math.round(Math.random() * 10000000).toString(),
         msg: this.newTodoMessage,
         date: this.dueDate
       }
@@ -164,6 +163,10 @@ export default {
       }
     }
   }
+
+  &-errors {
+    color: red;
+  }
 }
 
 .todos-length {
@@ -172,29 +175,30 @@ export default {
   align-self: flex-start;
 }
 
-.todos__browser-entry {
-  margin: 0.5em;
-}
+.todos__browser {
+  display: flex;
+  flex-direction: column-reverse;
 
-.todos__managament-errors {
-  color: red;
+  &-entry {
+    margin: 0.5em;
+  }
 }
 
 .error {
   border-color: red;
-  background: #FDD
-}
+  background: #FDD;
 
-.error:focus {
-  outline-color: #F99;
+  &:focus {
+    outline-color: #F99;
+  }
 }
 
 .valid {
   border-color: #5A5;
   background: #EFE;
-}
 
-.valid:focus {
-  outline-color: #8E8;
+  &:focus {
+    outline-color: #8E8;
+  }
 }
 </style>
