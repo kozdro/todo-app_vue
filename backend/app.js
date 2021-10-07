@@ -31,6 +31,7 @@ mongoClient.connect((err, db) => {
   mongoClient = db
 })
 
+// add task
 app.post('/api/add/', (req, res) => {
   collection.insertOne({ id: req.body.id, description: req.body.msg, dueTo: req.body.date }, (err, results) => {
     if (err) {
@@ -44,6 +45,7 @@ app.post('/api/add/', (req, res) => {
   })
 })
 
+// delete task
 app.post('/api/delete/', (req, res) => {
   console.log(req)
   collection.deleteOne({ id: '' }, (err, results) => {
@@ -58,6 +60,7 @@ app.post('/api/delete/', (req, res) => {
   })
 })
 
+// fetch tasks
 app.get('/api/get/', (req, res) => {
   collection.find().toArray((err, results) => {
     if (err) {
