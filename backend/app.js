@@ -22,7 +22,7 @@ let mongoClient = new MongoClient(uri, {
 const collection = mongoClient.db('todoVue').collection('todos')
 
 mongoClient.connect((err, db) => {
-  if (err !== null) {
+  if (err) {
     console.log(err)
 
     return
@@ -41,7 +41,7 @@ app.post('/api/add/', (req, res) => {
       return
     }
 
-    res.send(results) // returns new document
+    res.send(results)
   })
 })
 
